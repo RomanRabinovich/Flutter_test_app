@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_applazyload/widgets/main_screen/main_screen_widget.dart';
 
 import '../../Theme/app_button_style.dart';
 
@@ -77,14 +78,15 @@ class _FormWidget extends StatefulWidget {
 class __FormWidgetState extends State<_FormWidget> {
   final _loginTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
-  String? errorText = null;
+  String? errorText;
 
   void _auth() {
     final login = _loginTextController.text;
     final password = _passwordTextController.text;
     if (login == 'admin' && password == 'admin') {
       errorText = null;
-      print('open app');
+
+      Navigator.of(context).pushReplacementNamed('/main_screen');
     } else {
       errorText = 'Ne vernii login ili parol';
     }
