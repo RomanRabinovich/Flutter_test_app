@@ -4,4 +4,6 @@ class AppImages {
   AppImages._();
 
   static const String bear = 'images/bear.jpg';
+  static const String topHeader = 'images/topHeader.jpg';
+  static const String topHeaderSubImage = 'images/topHeaderSubImage.jpg';
 }

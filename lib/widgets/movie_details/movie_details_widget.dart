@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'movie_details_main_info_widget.dart';
+
 class MovieDetailsWidget extends StatefulWidget {
   final int movieId;
 
@@ -16,8 +18,13 @@ class _MovieDetailsWidgetState extends State<MovieDetailsWidget> {
       appBar: AppBar(
         title: Text('Movie Name'),
       ),
-      body: ListView(
-        children: [],
+      body: ColoredBox(
+        color: Color.fromRGBO(24, 23, 27, 1.0),
+        child: ListView(
+          children: [
+            MovieDetailsMainInfoWidget(),
+          ],
+        ),
       ),
     );
   }
