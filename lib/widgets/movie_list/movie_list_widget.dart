@@ -56,7 +56,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
             'I have never seen this fucking movie about these bastards.'),
     Movie(
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Fuck',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
@@ -78,11 +78,22 @@ class _MovieListWidgetState extends State<MovieListWidget> {
 
   final _searchController = TextEditingController();
 
-  void _searchMovies() {}
+  void _searchMovies() {
+    final query = _searchController.text;
+    if (query.isNotEmpty) {
+      _filterMovies = _movies.where((Movie movie) {
+        return movie.title.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    } else {
+      _filterMovies = _movies;
+    }
+    setState(() {});
+  }
 
   @override
   void initState() {
     super.initState();
+    _filterMovies = _movies;
 
     _searchController.addListener(_searchMovies);
   }
