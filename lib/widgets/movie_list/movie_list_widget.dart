@@ -2,12 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_applazyload/resources/resources.dart';
 
 class Movie {
+  final int id;
   final String imageName;
   final String title;
   final String time;
   final String description;
 
   Movie({
+    required this.id,
     required this.imageName,
     required this.title,
     required this.time,
@@ -25,50 +27,57 @@ class MovieListWidget extends StatefulWidget {
 class _MovieListWidgetState extends State<MovieListWidget> {
   final _movies = [
     Movie(
+        id: 1,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Smertelniaja bitv',
+        time: 'April 7, 2022',
+        description: 'I have never fucking movie about these bastards.'),
+    Movie(
+        id: 2,
+        imageName: AppImages.bear,
+        title: 'Smertelnia bitva',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
+        id: 3,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Smera bitva',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
+        id: 4,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Smertelnbitva',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
+        id: 5,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Smertelniajaitva',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
-        imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
-        time: 'April 7, 2022',
-        description:
-            'I have never seen this fucking movie about these bastards.'),
-    Movie(
+        id: 6,
         imageName: AppImages.bear,
         title: 'Fuck',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
+        id: 7,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Stelniaja bitva',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
     Movie(
+        id: 8,
         imageName: AppImages.bear,
-        title: 'Smertelniaja bitva',
+        title: 'Smertela',
         time: 'April 7, 2022',
         description:
             'I have never seen this fucking movie about these bastards.'),
@@ -96,6 +105,12 @@ class _MovieListWidgetState extends State<MovieListWidget> {
     _filterMovies = _movies;
 
     _searchController.addListener(_searchMovies);
+  }
+
+  void _onMovieTab(int index) {
+    final id = _movies[index].id;
+    Navigator.of(context)
+        .pushNamed('/main_screen/movie_details', arguments: id);
   }
 
   @override
@@ -176,9 +191,7 @@ class _MovieListWidgetState extends State<MovieListWidget> {
                     color: Colors.transparent,
                     child: InkWell(
                       borderRadius: BorderRadius.circular(10),
-                      onTap: () {
-                        print('11');
-                      },
+                      onTap: () => _onMovieTab(index),
                     ),
                   )
                 ],
